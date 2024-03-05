@@ -1,6 +1,8 @@
 library responsive_web_layout;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ResponsiveWebLayout {
@@ -83,14 +85,95 @@ class ResponsiveWebLayout {
               mediumMobileLayout: mediumMobileLayout,
               smallMobileLayout: smallMobileLayout);
         default:
-          debugPrint("Unsupported platform: ${defaultTargetPlatform.toString()}");
+          debugPrint(
+              "Unsupported platform: ${defaultTargetPlatform.toString()}");
           return const SizedBox.shrink();
       }
-    }
-    else {
+    } else {
       debugPrint(
-        "Unsupported configuration: screenWidth=$screenWidth, platform=${defaultTargetPlatform.toString()}");
+          "Unsupported configuration: screenWidth=$screenWidth, platform=${defaultTargetPlatform.toString()}");
       return const SizedBox.shrink();
+    }
+  }
+
+  static bool isQuadHDLayout({required BuildContext context}) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth >= 2560) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static bool isFullHDLayout({required BuildContext context}) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth >= 1920 && screenWidth < 2560) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static bool isHdLayout({required BuildContext context}) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth >= 1366 && screenWidth < 1920) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static bool isSdLayout({required BuildContext context}) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth >= 320 && screenWidth < 375) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static bool isSmallMobileLayout({required BuildContext context}) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth >= 1024 && screenWidth < 1366) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static bool isMediumMobileLayout({required BuildContext context}) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth >= 375 && screenWidth < 425) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static bool isLargeMobileLayout({required BuildContext context}) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth >= 425 && screenWidth < 768) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static bool isStandardTabletLayout({required BuildContext context}) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth >= 768 && screenWidth < 1024) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static bool isHighResTabletLayout({required BuildContext context}) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    if (screenWidth == 2048) {
+      return true;
+    } else {
+      return false;
     }
   }
 
