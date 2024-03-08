@@ -34,7 +34,7 @@ class ResponsiveWebLayout {
             highResTabletLayout: highResTabletLayout,
             standardTabletLayout: standardTabletLayout);
       }
-      if (screenWidth > 320 && screenWidth < 375 ||
+      if (screenWidth >= 320 && screenWidth < 375 ||
           screenWidth >= 375 && screenWidth < 425 ||
           screenWidth >= 425 && screenWidth < 768) {
         return buildMobileLayout(
@@ -125,7 +125,7 @@ class ResponsiveWebLayout {
 
   static bool isSdLayout({required BuildContext context}) {
     var screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth >= 320 && screenWidth < 375) {
+    if (screenWidth >= 1024 && screenWidth < 1366) {
       return true;
     } else {
       return false;
@@ -134,7 +134,7 @@ class ResponsiveWebLayout {
 
   static bool isSmallMobileLayout({required BuildContext context}) {
     var screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth >= 1024 && screenWidth < 1366) {
+    if (screenWidth >= 320 && screenWidth < 375) {
       return true;
     } else {
       return false;
